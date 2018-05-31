@@ -107,9 +107,11 @@ class SFunction: public SObject{
 
         SObject *Evaluate(){
             ObjectVector v = ComputeFilledParameters();
+            //如果不是所有的参数都有对应的值，那么部分求值
             if(v.size() < Parameters.size()){
                 return this;
             }
+            //如果所有参数都有值，那么直接根据函数体得到结果
             else{
                 return this->Body->Evaluate(this->Scope);
             }
