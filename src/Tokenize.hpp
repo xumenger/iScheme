@@ -22,7 +22,10 @@ String PrettyPrint(StrVector &lexes){
     for(i = 0; i < lexes.size() - 1; i++){
         str = str + "'" + lexes[i] + "', ";
     }
-    str = str + "'" + lexes[lexes.size() - 1] + "']";
+    if(lexes.size() >= 1){
+        str = str + "'" + lexes[lexes.size() - 1];
+    }
+    str = str + "']";
     return str;
 }
 
