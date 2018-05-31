@@ -6,6 +6,7 @@
 #include "SExpression.hpp"
 #include "SScope.hpp"
 #include "SObject.hpp"
+#include "BuiltIn.hpp"
 
 using namespace std;
 
