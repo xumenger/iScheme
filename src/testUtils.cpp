@@ -12,8 +12,18 @@ void testReplaceAll(){
     assert("11_22" == ReplaceAll(str, "abc", "11"));
 }
 
+void testTrimString(){
+    string str = "111abcdefg111";
+    assert("abcdefg" == TrimString(str, "1"));
+    str = "123abc123";
+    assert("abc" == TrimString(str, "123"));
+    str = "123";
+    assert("" == TrimString(str, "123"));
+}
+
 int main()
 {
     testReplaceAll();
+    testTrimString();
     return 0;
 }
