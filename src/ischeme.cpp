@@ -4,8 +4,8 @@
 #include "Utils.hpp"
 #include "Tokenize.hpp"
 #include "SExpression.hpp"
-#include "SObject.hpp"
 #include "SScope.hpp"
+#include "SObject.hpp"
 
 using namespace std;
 
