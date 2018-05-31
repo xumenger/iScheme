@@ -16,11 +16,14 @@ class SExpression;
 typedef std::vector<SExpression *> ExprVector;
 
 typedef SObject *(*BuiltInFuncion)(ExprVector &, SScope *);
+typedef std::map<std::string, BuiltInFuncion> BuiltInFunctionMap;
+typedef std::pair<std::string, BuiltInFuncion> BuiltInFuncionPair;
 
 class SScope{
     public:
         SScope *Parent;
         ObjectMap VariableMap;
+        BuiltInFunctionMap BuiltInFunctions;
 
     public:
         SScope(SScope *parent){
@@ -50,6 +53,11 @@ class SScope{
                 return it->second;
             }
             return NULL;
+        }
+
+        SScope *BuildIn(String name, BuiltInFuncion builtinFunction){
+            this->BuiltInFunctions.insert(BuiltInFuncionPair(name, builtinFunction));
+            return this;
         }
 };
 
