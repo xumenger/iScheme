@@ -4,10 +4,13 @@
 #include <string>
 #include <vector>
 
+#include "Tokenize.hpp"
+
 class SExpression;
 
 typedef std::string String;
 typedef std::vector<SExpression *> ExprVector;
+typedef std::vector<std::string> StrVector;
 
 class SExpression{
     public:
@@ -16,7 +19,7 @@ class SExpression{
         SExpression *Parent;
 
     public:
-        SExpression(String &value, SExpression *parent){
+        SExpression(const String &value, SExpression *parent){
             this->Value = value;
             this->Parent = parent;
         }
@@ -39,5 +42,29 @@ class SExpression{
             }
         }
 };
+
+////////////////////////////////////////
+//构建抽象语法树
+SExpression *ParseAsIScheme(String code){
+    SExpression *program = new SExpression("", NULL);
+    SExpression *current = program;
+    StrVector v = Tokenize(code);
+    int i = 0;
+    for(i = 0; i < v.size(); i++){
+        if(v[i] == "("){
+            SExpression *newNode = new SExpression("(", current);
+            current->Children.push_back(newNode);
+            current = newNode;
+        }
+        else if(v[i] == ")"){
+            current = current->Parent;
+        }
+        else{
+            SExpression *newNode = new SExpression(v[i], current);
+            current->Children.push_back(newNode);
+        }
+    }
+    return program->Children[0];
+}
 
 #endif
