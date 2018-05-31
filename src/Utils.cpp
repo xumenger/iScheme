@@ -6,6 +6,12 @@ void Int2Str(const int _i, String &_s){
     _s = stream.str();
 }
 
+void Str2Int(const std::string &_s, int &_i, int dft){
+    _i = dft;
+    std::stringstream stream(_s);
+    stream >> _i;
+}
+
 /*******************************************************************************
 * Function   : ReplaceAll
 * Description: 用_new替换_str中所有的_old子串

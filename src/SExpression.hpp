@@ -6,6 +6,8 @@
 
 #include "Tokenize.hpp"
 
+class SObject;
+class SScope;
 class SExpression;
 
 typedef std::string String;
@@ -41,6 +43,8 @@ class SExpression{
                 return this->Value;
             }
         }
+
+        SObject *Evaluate(SScope *scope);
 };
 
 ////////////////////////////////////////

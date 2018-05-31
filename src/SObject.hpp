@@ -102,6 +102,18 @@ class SFunction: public SObject{
         }
 
         String ToString();
+
+        ObjectVector ComputeFilledParameters();
+
+        SObject *Evaluate(){
+            ObjectVector v = ComputeFilledParameters();
+            if(v.size() < Parameters.size()){
+                return this;
+            }
+            else{
+                return this->Body->Evaluate(this->Scope);
+            }
+        }
 };
 
 #endif

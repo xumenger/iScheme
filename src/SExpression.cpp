@@ -1,4 +1,18 @@
 #include "SExpression.hpp"
+#include "SObject.hpp"
+#include "SScope.hpp"
+
+SObject *SExpression::Evaluate(SScope *scope){
+    if(this->Children.size() == 0){
+        int number;
+        Str2Int(this->Value, number, 0);
+        return new SNumber(number);
+    }
+    else{
+        SExpression *first = this->Children[0];
+        // if(scope.)
+    }
+}
 
 SExpression *ParseAsIScheme(String code){
     SExpression *program = new SExpression("", NULL);
