@@ -7,7 +7,7 @@
 class SExpression;
 
 typedef std::string String;
-typedef vector<SExpression *> ExprVector;
+typedef std::vector<SExpression *> ExprVector;
 
 class SExpression{
     public:
@@ -17,25 +17,25 @@ class SExpression{
 
     public:
         SExpression(String &value, SExpression *parent){
-            this Value = value;
-            this.Parent = parent;
+            this->Value = value;
+            this->Parent = parent;
         }
 
         String ToString(){
-            if(this.Value == "("){
+            if(this->Value == "("){
                 String str = "(";
                 int i = 0;
                 for(i = 0; i < Children.size() - 1; i++){
-                    str = str + Children[i].ToString() + " ";
+                    str = str + Children[i]->ToString() + " ";
                 }
                 if(Children.size() >= 1){
-                    str = str + Children[Children.size()].ToString();
+                    str = str + Children[Children.size()]->ToString();
                 }
                 str = str + ")";
                 return str;
             }
             else{
-                return this.Value;
+                return this->Value;
             }
         }
 };
