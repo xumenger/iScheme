@@ -1,21 +1,19 @@
-#ifndef __ISCHEME_TOKENIZE_HPP_
-#define __ISCHEME_TOKENIZE_HPP_
+#ifndef _ISCHEME_TOKENIZE_HPP_
+#define _ISCHEME_TOKENIZE_HPP_
 
 #include <string>
+#include <vector>
+#include "Utils.hpp"
 
 typedef std::string String;
+typedef std::vector<std::string> StrVector;
 
-String &ReplaceAll(String &str, const String &_old, const String &_new){
-    while(true){
-        String::size_type pos(0);
-        if((pos = str.find(_old)) != String::npos){
-            str.replace(pos, _old.length(), _new);
-        }
-        else{
-            break;
-        }
-    }
-    return str;
+StrVector Tokenize(String text){
+    text = ReplaceAll(text, "(", "( ");
+    text = ReplaceAll(text, ")", ") ");
+    StrVector v;
+    
+    return v;
 }
 
 #endif

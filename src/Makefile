@@ -1,2 +1,2 @@
-testTokenize.out: testTokenize.cpp Tokenize.hpp
-	g++ testTokenize.cpp -o testTokenize.out
+testUtils.out: testUtils.cpp Utils.hpp
+	g++ testUtils.cpp -o testUtils.out
