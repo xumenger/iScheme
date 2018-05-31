@@ -17,13 +17,14 @@ typedef std::vector<SExpression *> ExprVector;
 
 typedef SObject *(*BuiltInFuncion)(ExprVector &, SScope *);
 typedef std::map<std::string, BuiltInFuncion> BuiltInFunctionMap;
+typedef std::map<std::string, BuiltInFuncion>::iterator BuiltInFunctionMapIt;
 typedef std::pair<std::string, BuiltInFuncion> BuiltInFuncionPair;
 
 class SScope{
     public:
         SScope *Parent;
         ObjectMap VariableMap;
-        BuiltInFunctionMap BuiltInFunctions;
+        static BuiltInFunctionMap BuiltInFunctions;
 
     public:
         SScope(SScope *parent){

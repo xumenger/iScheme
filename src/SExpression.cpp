@@ -8,10 +8,16 @@ SObject *SExpression::Evaluate(SScope *scope){
         Str2Int(this->Value, number, 0);
         return new SNumber(number);
     }
+    // 递归求表达式内的所有子表达式
     else{
         SExpression *first = this->Children[0];
-        // if(scope.)
+        BuiltInFunctionMapIt it;
+        it = SScope::BuiltInFunctions.find(first->Value);
+        if(it != SScope::BuiltInFunctions.end()){
+            return it->second(this->Children, scope);
+        }
     }
+    return NULL;
 }
 
 SExpression *ParseAsIScheme(String code){
