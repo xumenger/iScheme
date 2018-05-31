@@ -20,15 +20,20 @@ typedef std::vector<std::string> StrVector;
 * Others     :
 *******************************************************************************/
 String &ReplaceAll(String &_str, const String &_old, const String &_new){
+    //std::cout << _str << std::endl;
+    //std::cout << _old << std::endl;
+    //std::cout << _new << std::endl;
+    String::size_type pos(0);
     while(true){
-        String::size_type pos(0);
-        if((pos = _str.find(_old)) != String::npos){
+        if((pos = _str.find(_old, pos)) != String::npos){
             _str.replace(pos, _old.length(), _new);
+            pos = pos + _new.length();
         }
         else{
             break;
         }
     }
+    //std::cout << _str << std::endl;
     return _str;
 }
 
