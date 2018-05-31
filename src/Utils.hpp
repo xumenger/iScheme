@@ -113,8 +113,10 @@ StrVector SplitString(const String &_str, const String &_separator){
         String::size_type j(0);
         for(j = 0; j < _separator.size(); j++){
             if (new_str[i] == _separator[j]){
-                result.push_back(temp);
-                temp = "";
+                if("" != temp){
+                    result.push_back(temp);
+                    temp = "";
+                }
                 flag = true;
                 break;
             }
@@ -124,7 +126,12 @@ StrVector SplitString(const String &_str, const String &_separator){
         }
         flag = false;
     }
+    if(temp != ""){
+        result.push_back(temp);
+    }
+
     return result;
 }
 
 #endif
+

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <assert.h>
 #include <string>
+#include <vector>
 #include "Utils.hpp"
 
 using namespace std;
@@ -19,11 +20,22 @@ void testTrimString(){
     assert("abc" == TrimString(str, "123"));
     str = "123";
     assert("" == TrimString(str, "123"));
+    str = " ( * (+  1  3) ) ";
+    assert("( * (+  1  3) )" == TrimString(str, " "));
+}
+
+void tetSplitString(){
+    string str = " ( * (+  1  3) ) ";
+    vector<string> v = SplitString(str, " \t\r\n");
+    assert(v.size() == 6);
+    assert(v[0] == "(");
+    assert(v[2] == "(+");
 }
 
 int main()
 {
     testReplaceAll();
     testTrimString();
+    tetSplitString();
     return 0;
 }
