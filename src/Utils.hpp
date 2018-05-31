@@ -4,9 +4,16 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 
 typedef std::string String;
 typedef std::vector<std::string> StrVector;
+
+void Int2Str(const int _i, String &_s){
+    std::stringstream stream;
+    stream << _i;
+    _s = stream.str();
+}
 
 /*******************************************************************************
 * Function   : ReplaceAll
