@@ -37,6 +37,14 @@ class SScope{
             this->VariableMap.insert(ObjectPair(name, value));
             return value;
         }
+
+        SObject *FindInTop(String name){
+            ObjectMapIt it = this->VariableMap.find(name);
+            if(it != VariableMap.end()){
+                return it->second;
+            }
+            return NULL;
+        }
 };
 
 #endif
