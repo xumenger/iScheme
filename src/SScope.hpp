@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 #include "SObject.hpp"
 
@@ -10,6 +11,11 @@ typedef std::string String;
 typedef std::map<std::string, SObject *> ObjectMap;
 typedef std::map<std::string, SObject *>::iterator ObjectMapIt;
 typedef std::pair<std::string, SObject *> ObjectPair;
+
+class SExpression;
+typedef std::vector<SExpression *> ExprVector;
+
+typedef SObject *(*BuiltInFuncion)(ExprVector &, SScope *);
 
 class SScope{
     public:
